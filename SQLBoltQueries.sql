@@ -110,7 +110,7 @@ SELECT role, SUM(years_employed) total_years_employed FROM employees
 SELECT director, COUNT() number_of_movies FROM movies GROUP BY director;
 SELECT 
     m.director,
-    (SUM(b.domestic_sales) + SUM(b.international_sales)) as total_sales
+    (SUM(b.domestic_sales) + SUM(b.international_sales)) AS total_sales
     FROM movies m
         JOIN boxoffice b 
         ON m.id = b.movie_id
