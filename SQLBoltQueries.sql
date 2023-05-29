@@ -8,10 +8,10 @@ SELECT * FROM movies;
 
 -- Exercise 2 --
 
-SELECT * FROM movies WHERE id = 6;
-SELECT * FROM movies WHERE Year BETWEEN 2000 AND 2010;
-SELECT * FROM movies WHERE Year NOT BETWEEN 2000 AND 2010;
-SELECT * FROM movies LIMIT 5;
+SELECT title, year FROM movies WHERE id = 6;
+SELECT title, year FROM movies WHERE Year BETWEEN 2000 AND 2010;
+SELECT title, year FROM movies WHERE Year NOT BETWEEN 2000 AND 2010;
+SELECT title, year FROM movies ORDER BY year LIMIT 5;
 
 -- Exercise 3 --
 
@@ -93,7 +93,7 @@ SELECT title, year FROM movies WHERE (year % 2) = 0;
 
 -- Exercise 10 --
 
-SELECT name, MAX(years_employed) longest_hired_employee FROM employees;
+SELECT MAX(years_employed) longest_hired_employee FROM employees;
 SELECT role, AVG(years_employed) average_years_employed FROM employees GROUP BY role;
 SELECT building, SUM(years_employed) FROM employees GROUP BY building;
 
@@ -110,7 +110,7 @@ SELECT role, SUM(years_employed) total_years_employed FROM employees
 SELECT director, COUNT() number_of_movies FROM movies GROUP BY director;
 SELECT 
     m.director,
-    (SUM(b.domestic_sales) + SUM(b.international_sales)) total_sales
+    (SUM(b.domestic_sales) + SUM(b.international_sales)) as total_sales
     FROM movies m
         JOIN boxoffice b 
         ON m.id = b.movie_id
